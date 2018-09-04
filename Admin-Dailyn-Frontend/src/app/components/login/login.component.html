@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>{{title}}</h3>
+            </div>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="panel-body">
+                    <!-- Input username -->
+                    <div class="form-group">
+                        <div class="input-group" [ngClass]="{'has-error has-feedback': !userName.valid && userName.touched}">
+                            <span class="input-group-addon" id="basic-addon1">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <input type="text" #userName="ngModel" [(ngModel)]="user.userName" name="userName" class="form-control" placeholder="Username"
+                                aria-describedby="basic-addon1" required>
+                        </div>
+                        <span class="text-danger" *ngIf="!userName.valid && userName.touched">
+                            * username obligatorio
+                        </span>
+                    </div>
+                    <!-- Input password -->
+                    <div class="form-group">
+                        <div class="input-group" [ngClass]="{'has-error has-feedback': !userPassword.valid && userPassword.touched}">
+                            <span class="input-group-addon" id="basic-addon1">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                            <input type="password" #userPassword="ngModel" [(ngModel)]="user.userPassword" name="userPassword" class="form-control" placeholder="Password"
+                                aria-describedby="basic-addon1" required>
+                        </div>
+                        <span class="text-danger" *ngIf="!userPassword.valid && userPassword.touched">
+                            * Password obligatorio
+                        </span>
+                    </div>
+                    <!-- Button login -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" [ngClass]="{disabled: !userName.valid || !userPassword.valid}">Login</button>
+                    </div>
+                    <!-- Message error -->
+                    <div class="alert alert-danger" role="alert" *ngIf="status == 'error'">
+                        <strong>Error!</strong>
+                        Usuario o contraseña incorrecto
+                        <p>
+                            {{message}}
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

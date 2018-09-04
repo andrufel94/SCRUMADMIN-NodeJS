@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <!-- Navigation-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand" [routerLink]="['/']">{{title}}</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse-ex">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+      </div>
+      <div class="navbar-collapse collapse" id="nav-collapse-ex">
+        <ul class="nav navbar-nav side-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">Seguridad
+                <span class="caret"></span>
+            </a>
+            <!-- <span class="caret"></span> -->
+            <ul class="dropdown-menu">
+              <li><a [routerLink]="['/projectApi']">Administrador</a></li>
+              <li><a [routerLink]="['/home']">Felipe</a></li>
+              <li><a [routerLink]="['/home']">Luque</a></li>
+            </ul>
+          </li>
+          <li><a [routerLink]="['/home']">Paula</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <router-outlet></router-outlet> 
+  </div>
+</div>

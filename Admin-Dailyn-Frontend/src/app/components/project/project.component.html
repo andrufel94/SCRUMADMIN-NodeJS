@@ -1,0 +1,49 @@
+<h1>{{title}}</h1>
+
+<!-- DATA GRID -->
+<dx-data-grid id="gridContainer" keyExpr="_id" [dataSource]="dataSource" [showRowLines]="true" [showBorders]="true" [allowColumnReordering]="true"
+    (onEditingStart)="logEvent('EditingStart')" (onInitNewRow)="logEvent('InitNewRow')" (onRowInserting)="onRowInserting($event)"
+    (onRowInserted)="onRowInserted($event)" (onRowUpdating)="logEvent('RowUpdating')" (onRowUpdated)="logEvent('RowUpdated')"
+    (onRowRemoving)="logEvent('RowRemoving')" (onRowRemoved)="logEvent('RowRemoved')">
+    <!-- CONFIG -->
+    <dxo-editing mode="form" [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+    </dxo-editing>
+    <dxo-sorting mode="none"></dxo-sorting>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-sorting mode="none"></dxo-sorting>
+    <!-- COLUMNS -->
+    <!-- <dxi-column dataField="_id" dataType="string" [visible]="false" [allowEditing]="false"></dxi-column> -->
+    <dxi-column dataField="projectName" dataType="string"></dxi-column>
+    <dxi-column dataField="projectDescription" dataType="string"></dxi-column>
+    <dxi-column dataField="projectEnable" dataType="boolean"></dxi-column>
+    <dxi-column dataField="usersOwners" cellTemplate="userCellTemplate" editCellTemplate="editCellTemplate"></dxi-column>
+    <!-- TEMPLATES -->
+    <div *dxTemplate="let data of 'userCellTemplate'">
+        <div *ngFor="let user of data.value">
+            <span>{{user.userName}}</span>
+        </div>
+    </div>
+    <div *dxTemplate="let cellInfo of 'editCellTemplate'">
+        <!-- <dx-list [items]="users" [showSelectionControls]="true" selectionMode="multiple" [(selectedItems)]="cellInfo.value">
+        </dx-list> -->
+        <dx-list [dataSource]="users" [showSelectionControls]="true" selectionMode="multiple" itemTemplate="listUsers" [(selectedItems)]="selectedUsers"
+            (onContentReady)="onContentReady($event,cellInfo.value)">
+            <div *dxTemplate="let data of 'listUsers'">
+                <b>{{data.userName}}</b>
+                <br/>
+                <p style="margin:0">{{data._id}}</p>
+            </div>
+        </dx-list>
+    </div>
+</dx-data-grid>
+<div id="events">
+    <div>
+        <div class="caption">
+            Fired events
+        </div>
+        <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+    </div>
+    <ul>
+        <li *ngFor="let event of events">{{event}}</li>
+    </ul>
+</div>
