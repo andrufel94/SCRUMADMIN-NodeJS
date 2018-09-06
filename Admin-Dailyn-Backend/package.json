@@ -10,13 +10,15 @@
   "author": "Andres Luque",
   "license": "MIT",
   "dependencies": {
-    "@google-cloud/datastore": "^1.4.1",
+    "@google-cloud/datastore": "^1.4.2",
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "jwt-simple": "^0.5.1",
-    "moment": "^2.20.1",
-    "mongoose": "^4.13.9",
-    "nodemon": "^1.14.11"
+    "lodash": "^4.17.10",
+    "mixin-deep": "^2.0.0",
+    "moment": "^2.22.2",
+    "mongoose": "^4.13.17",
+    "nodemon": "^1.18.4"
   }
 }
